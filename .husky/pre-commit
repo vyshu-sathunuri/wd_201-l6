@@ -3,8 +3,3 @@
 
 npm test
 npx lint-staged
-npx lint-stagednpm test
-npx lint-staged
-npx lint-staged
-npm test
-npx lint-staged
