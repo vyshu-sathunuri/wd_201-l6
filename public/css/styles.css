@@ -1,12 +1,11 @@
-body{
-    font-family: sans-serif;
-    background: white;
-}
-
-.Todo-Item:hover .trash-icon {
+body {
+    color: black;
+    font-family: "Courier New", Courier, monospace;
+  }
+  
+  .Todo-Item:hover .trash-icon {
     display: block;
-
-}
-h5 {
+  }
+  h5 {
     display: inline;
   }
