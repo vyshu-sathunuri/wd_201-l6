@@ -9,12 +9,12 @@ module.exports = {
      * Example:
      * await queryInterface.createTable('users', { id: Sequelize.INTEGER });
      */
-    await queryInterface.addColumn("Todos", "userid", {
+    await queryInterface.addColumn("Todos", "userId", {
       type: Sequelize.DataTypes.INTEGER,
     });
 
     await queryInterface.addConstraint("Todos", {
-      fields: ["userid"],
+      fields: ["userId"],
       type: "foreign key",
       references: {
         table: "Users",
@@ -30,6 +30,6 @@ module.exports = {
      * Example:
      * await queryInterface.dropTable('users');
      */
-    await queryInterface.removeColumn("Todos", "userid");
+    await queryInterface.removeColumn("Todos", "userId");
   },
 };

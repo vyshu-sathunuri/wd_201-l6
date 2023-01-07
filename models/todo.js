@@ -10,16 +10,16 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       Todo.belongsTo(models.User, {
-        foreignKey: "userid",
+        foreignKey: "userId",
       });
     }
 
-    static addTodo({ title, dueDate, userid }) {
+    static addTodo({ title, dueDate, userId }) {
       return this.create({
         title: title,
         dueDate: dueDate,
         completed: false,
-        userid,
+        userId,
       });
     }
 
@@ -30,52 +30,52 @@ module.exports = (sequelize, DataTypes) => {
     // markAsCompleted() {
     //   return this.update({ completed: true });
     // }
-    static async overdue(userid) {
+    static async overdue(userId) {
       return await Todo.findAll({
         where: {
           dueDate: { [Op.lt]: new Date().toLocaleDateString("en-CA") },
-          userid,
+          userId,
           completed: false,
         },
         order: [["id", "ASC"]],
       });
     }
-    static async dueToday(userid) {
+    static async dueToday(userId) {
       return await Todo.findAll({
         where: {
           dueDate: { [Op.eq]: new Date().toLocaleDateString("en-CA") },
           completed: false,
-          userid,
+          userId,
         },
 
         order: [["id", "ASC"]],
       });
     }
-    static async dueLater(userid) {
+    static async dueLater(userId) {
       return await Todo.findAll({
         where: {
           dueDate: { [Op.gt]: new Date().toLocaleDateString("en-CA") },
           completed: false,
-          userid,
+          userId,
         },
 
         order: [["id", "ASC"]],
       });
     }
 
-    static async completedTodos(userid) {
+    static async completedTodos(userId) {
       return await Todo.findAll({
         where: {
           completed: true,
-          userid,
+          userId,
         },
       });
     }
-    static async remove(id, userid) {
+    static async remove(id, userId) {
       return this.destroy({
         where: {
           id,
-          userid,
+          userId,
         },
       });
     }
